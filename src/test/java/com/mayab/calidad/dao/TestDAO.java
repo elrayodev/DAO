@@ -24,16 +24,18 @@ public class TestDAO {
 		System.out.println("\n-----addAlumnoFakeTest-----");
 		System.out.println("Cantidad de alumnos en sistema: " + dao.credenciales.size());
 		
+		expectedResult = dao.credenciales.size();
+		
 		//Agregamos alumno
 		dao.addAlumno(al);
 		//endExercise
 		
 		System.out.println("Cantidad de alumnos en sistema: " + dao.credenciales.size());
 		
-		expectedResult = 1;
+		
 		result = dao.credenciales.size();
 		
-		assertThat(result, is(expectedResult));
+		assertThat(result, is(expectedResult+1));
 		//endVerify
 	}
 	
