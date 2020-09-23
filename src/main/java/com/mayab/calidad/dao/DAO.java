@@ -2,9 +2,9 @@ package com.mayab.calidad.dao;
 
 public interface DAO {
 	
-	void addAlumno(Alumno a);
-	void delateAlumno(Alumno a);
-	void updatePromedioAlumno(Alumno a, float nuevoPromedio);
-	Alumno getAlumno(int id);
+	public boolean addAlumno(Alumno a);
+	public void delateAlumno(Alumno a);
+	public void updatePromedioAlumno(Alumno a, float nuevoPromedio);
+	public Alumno getAlumno(int id);
 	
 }
