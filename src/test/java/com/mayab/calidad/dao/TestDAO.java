@@ -9,6 +9,7 @@ import org.junit.Test;
 public class TestDAO {
 	
 	Alumno al = new Alumno();
+	Alumno al2 = new Alumno(1);
 	DAOFake dao;
 	int result;
 	int expectedResult;
@@ -16,21 +17,22 @@ public class TestDAO {
 	@Before
 	public void setUp() {
 		dao = new DAOFake();
+		dao.addAlumno(al);
 	}
 
 	@Test
 	public void addAlumnoFakeTest() {
 		
-		System.out.println("\n-----addAlumnoFakeTest-----");
-		System.out.println("Cantidad de alumnos en sistema: " + dao.credenciales.size());
+		System.out.println("-----addAlumnoFakeTest-----");
+		System.out.println("Cantidad de alumnos antes de ejercitar: " + dao.credenciales.size());
 		
 		expectedResult = dao.credenciales.size();
 		
 		//Agregamos alumno
-		dao.addAlumno(al);
+		dao.addAlumno(al2);
 		//endExercise
 		
-		System.out.println("Cantidad de alumnos en sistema: " + dao.credenciales.size());
+		System.out.println("Cantidad de alumnos despues de ejercitar: " + dao.credenciales.size());
 		
 		
 		result = dao.credenciales.size();
@@ -40,22 +42,18 @@ public class TestDAO {
 	}
 	
 	@Test
-	public void delateAlumnoFakeTest() {
+	public void deleteAlumnoFakeTest() {
 		
 		System.out.println("-----delateAlumnoFakeTest-----");
-		System.out.println("Cantidad de alumnos en sistema: " + dao.credenciales.size());
+		System.out.println("Cantidad de alumnos antes de ejercitar: " + dao.credenciales.size());
 		
-		//Agregamos alumno
-		dao.addAlumno(al);
-		
-		System.out.println("Cantidad de alumnos en sistema: " + dao.credenciales.size());
+		expectedResult = dao.credenciales.size()-1;
 		
 		//Eliminamos alumno
-		dao.delateAlumno(al);
+		dao.deleteAlumno(al);
 		
-		System.out.println("Cantidad de alumnos en sistema: " + dao.credenciales.size());
+		System.out.println("Cantidad de alumnos despues de ejercitar: " + dao.credenciales.size());
 		
-		expectedResult = 0;
 		result = dao.credenciales.size();
 		
 		assertThat(result, is(expectedResult));
@@ -65,19 +63,16 @@ public class TestDAO {
 	@Test
 	public void updateAlumnoFakeTest() {
 		
-		float nuevoPromedio = 5.2f;
+		float nuevoPromedio = 5.5f;
 		
-		System.out.println("\n-----updateAlumnoFakeTest-----");
+		System.out.println("-----updateAlumnoFakeTest-----");
+		System.out.println("Promedio alumno antes de ejercitar: " + al.getPromedio());
 		
-		//Agregamos alumno
-		dao.addAlumno(al);
-		System.out.println("Promedio: " + al.getPromedio());
-		
-		//Modificamos promedio
+		//Ejercitamos codigo
 		dao.updatePromedioAlumno(al, nuevoPromedio);
-		System.out.println("Nuevo Promedio: " + al.getPromedio());
+		System.out.println("Promedio alumno despues de ejercitar: " + al.getPromedio());
 		
-		float expectedResult = 5.2f;
+		float expectedResult = 5.5f;
 		float result = al.getPromedio();
 		
 		assertThat(result,is(expectedResult));
@@ -85,20 +80,19 @@ public class TestDAO {
 	
 	@Test
 	public void getAlumnoFakeTest() {
-		
+
 		System.out.println("\n-----getAlumnoFakeTest-----");
 		System.out.println("\tAntes de ejercitar");
-		System.out.println(dao.getAlumno(al.getId()));
-				
-		//Agregamos alumno
-		dao.addAlumno(al);
+		System.out.println(dao.getAlumno(al2.getId()));
+		
+		dao.addAlumno(al2);
 		
 		//ExpectedResult
 		System.out.println("\tDespués de ejercitar");
-		System.out.println(dao.getAlumno(al.getId()));
+		System.out.println(dao.getAlumno(al2.getId()));
 		
-		Alumno result = dao.getAlumno(al.getId());
-		Alumno expectedResult = al;
+		Alumno result = dao.getAlumno(al2.getId());
+		Alumno expectedResult = al2;
 		
 		assertThat(result,is(expectedResult));
 		//endVerify

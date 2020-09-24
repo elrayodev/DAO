@@ -10,30 +10,22 @@ public class DAOFake implements DAO{
 		
 		//Corroboramos que la key exista
 		if(credenciales.containsKey(a.getId())){
-			
 			System.out.println("El alumno ya se encuentra en el sistema");
-			
 		}else {
-			
 			//Agrega alumno al hash 
 			credenciales.put(a.getId(), a);
-			
 		} //endif
 		
 	} //endAddAlumno method
 
-	public void delateAlumno(Alumno a) {
+	public void deleteAlumno(Alumno a) {
 		
 		//Corroboramos que la key exista
 		if(credenciales.containsKey(a.getId())) {
-			
 			//Removemos alumno del hash
 			credenciales.remove(a.getId());
-			
 		}else {
-			
 			System.out.println("El alumno no existe en el sistema");
-			
 		} //endif
 		
 	} //endDelateAlumno method
@@ -41,13 +33,10 @@ public class DAOFake implements DAO{
 
 	public void updatePromedioAlumno(Alumno a, float nuevoPromedio) {
 
-		if(credenciales.containsKey(a.getId())) {
-			
+		if(credenciales.containsKey(a.getId())) {	
 			a.setPromedio(nuevoPromedio);
 		}else {
-			
 			System.out.println("El alumno no existe en el sistema");
-			
 		} //endif
 		
 	} //endUpdatePromedioAlumno method

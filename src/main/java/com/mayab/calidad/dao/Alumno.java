@@ -16,6 +16,14 @@ public class Alumno {
 		this.promedio = 0;
 	}
 	
+	public Alumno(int id){
+		this.nombre = "";
+		this.id = id;
+		this.edad = 0;
+		this.email = "";
+		this.promedio = 0;
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}
