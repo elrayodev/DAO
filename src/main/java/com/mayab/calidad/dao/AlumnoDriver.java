@@ -9,16 +9,19 @@ public class AlumnoDriver {
 		Alumno a2 = new Alumno("Jimena", 3, 22, "jimena@anahuac.mx", 8.7f);
 		
 		dao.getConnection();
-		//dao.addAlumno(a);
-		dao.updatePromedioAlumno(a2, 5.6f);
-		dao.updatePromedioAlumno(a, 9.9f);
-		//dao.updatePromedioAlumno(a, 6.8f);
-		//dao.addAlumno(a2);
+		
 		//dao.addAlumno(a);
 		//dao.addAlumno(a2);
-		//dao.updatePromedioAlumno(a, 9.9f);
-		//dao.deleteAlumno(a2);
-	
+		System.out.println("Promedio a:" + a.getPromedio());
+		System.out.println("Promedio a2:" + a2.getPromedio());
+
+		dao.updatePromedioAlumno(a, 7.2f);
+		dao.updatePromedioAlumno(a2, 5.3f);
+		
+		System.out.println("Promedio a:" + a.getPromedio());
+		System.out.println("Promedio a2:" + a2.getPromedio());
+
+
 	}
 
 }

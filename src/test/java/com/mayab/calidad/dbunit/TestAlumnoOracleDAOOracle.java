@@ -87,21 +87,21 @@ public class TestAlumnoOracleDAOOracle extends DBTestCase{
 		
 		
 		//Verify
-				try {
-					IDataSet databaseDataSet = getConnection().createDataSet();
-					ITable actualTable = databaseDataSet.getTable("alumnos");
-					
-					//Leemos datos del archivo esperado
-					//InputStream xmlFile = getClass().getResourceAsStream("/insert_result.xml");
-					//IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(xmlFile);
-					
-					IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(new File("src/resources/alumno_init.xml"));
-					ITable expectedTable = expectedDataSet.getTable("alumnos");
-					
-					Assertion.assertEquals(expectedTable, actualTable);
-				}catch(Exception e) {
-					System.out.println(e.getMessage());
-				}
+		try {
+			IDataSet databaseDataSet = getConnection().createDataSet();
+			ITable actualTable = databaseDataSet.getTable("alumnos");
+			
+			//Leemos datos del archivo esperado
+			//InputStream xmlFile = getClass().getResourceAsStream("/insert_result.xml");
+			//IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(xmlFile);
+			
+			IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(new File("src/resources/alumno_init.xml"));
+			ITable expectedTable = expectedDataSet.getTable("alumnos");
+			
+			Assertion.assertEquals(expectedTable, actualTable);
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
 				
 	}
 	
@@ -114,30 +114,64 @@ public class TestAlumnoOracleDAOOracle extends DBTestCase{
 		dao.updatePromedioAlumno(a2, 7.4f);
 		System.out.println("Promedio modificado: " + a2.getPromedio());
 		
-		
 		//Verify
-				try {
-					IDataSet databaseDataSet = getConnection().createDataSet();
-					ITable actualTable = databaseDataSet.getTable("alumnos");
-					Object actualPromedio = actualTable.getValue(0, "promedio");
-					
-					//Leemos datos del archivo esperado
-					//InputStream xmlFile = getClass().getResourceAsStream("/insert_result.xml");
-					//IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(xmlFile);
-					
-					IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(new File("src/resources/alumno_update.xml"));
-					ITable expectedTable = expectedDataSet.getTable("alumnos");
-					Object expectedPromedio = expectedTable.getValue(0, "promedio");
-					
-					//Assertion.assertEquals(expectedTable, actualTable);
-					assertEquals(expectedPromedio, actualPromedio);
-					
-				}catch(Exception e) {
-					System.out.println(e.getMessage());
-				}
+		try {
+			IDataSet databaseDataSet = getConnection().createDataSet();
+			ITable actualTable = databaseDataSet.getTable("alumnos");
+			Object actualPromedio = actualTable.getValue(1, "promedio");
+			
+			//Leemos datos del archivo esperado
+			//InputStream xmlFile = getClass().getResourceAsStream("/insert_result.xml");
+			//IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(xmlFile);
+			
+			IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(new File("src/resources/alumno_update.xml"));
+			ITable expectedTable = expectedDataSet.getTable("alumnos");
+			Object expectedPromedio = expectedTable.getValue(0, "promedio");
+			
+			//Assertion.assertEquals(expectedTable, actualTable);
+			assertEquals(expectedPromedio,actualPromedio);
+			
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
 				
 	}
 	
+	@Test
+	public void testGetAlumno() {
+		
+		dao.addAlumno(a);
+		
+		//Verify
+		try {
+			IDataSet databaseDataSet = getConnection().createDataSet();
+			ITable actualTable = databaseDataSet.getTable("alumnos");
+			Object actualName = actualTable.getValue(0, "first_name");
+			Object actualAge = actualTable.getValue(0, "edad");
+			Object actualEmail = actualTable.getValue(0, "email");
+			Object actualPromedio = actualTable.getValue(0, "promedio");
+			
+			//Leemos datos del archivo esperado
+			//InputStream xmlFile = getClass().getResourceAsStream("/insert_result.xml");
+			//IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(xmlFile);
+			
+			IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(new File("src/resources/alumno_init.xml"));
+			ITable expectedTable = expectedDataSet.getTable("alumnos");
+			Object expectedName = actualTable.getValue(0, "first_name");
+			Object expectedAge = actualTable.getValue(0, "edad");
+			Object expectedEmail = actualTable.getValue(0, "email");
+			Object expectedPromedio = expectedTable.getValue(0, "promedio");
+			
+			assertEquals(expectedName, actualName);
+			assertEquals(expectedAge, actualAge);
+			assertEquals(expectedEmail, actualEmail);
+			assertEquals(expectedPromedio, actualPromedio);
+			
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+			}
+				
+	}
 	
 	@Override
 	protected IDataSet getDataSet() throws Exception {

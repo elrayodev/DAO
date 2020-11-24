@@ -3,6 +3,7 @@ package com.mayab.calidad.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AlumnoDAOOracle implements DAO{
@@ -63,6 +64,8 @@ public class AlumnoDAOOracle implements DAO{
 		Connection con = getConnection();
 		PreparedStatement ps;
 		
+		a.setPromedio(nuevoPromedio);
+		
 		try {
 			
 			ps = con.prepareStatement(
@@ -84,8 +87,39 @@ public class AlumnoDAOOracle implements DAO{
 	}
 
 	public Alumno getAlumno(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Connection con = getConnection();
+		PreparedStatement ps;
+		ResultSet rs;
+		Alumno a = null;
+		
+		try {
+			
+			ps = con.prepareStatement(
+					"select * from alumnos where id =?");
+			ps.setInt(1, id);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				
+				a = new Alumno(rs.getString("first_name"),
+						rs.getInt("id"), rs.getInt("edad"),
+						rs.getString("email"), rs.getFloat("promedio"));
+				
+			}
+			
+			int status = ps.executeUpdate();
+			
+			con.close();
+			
+		}catch(Exception ex) {
+			
+			ex.printStackTrace();
+			
+		}
+		
+		return a;
+		
 	}
 
 	public Connection getConnection() {
