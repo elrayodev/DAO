@@ -1,0 +1,226 @@
+{
+	"id": "98d59f17-07c4-4dcf-868a-ce8f75eec8fd",
+	"name": "Practica Test API",
+	"timestamp": "2020-11-18T02:44:43.655Z",
+	"collection_id": "5f614ea5-b2af-4313-bbd2-0f908c3f8393",
+	"folder_id": 0,
+	"environment_id": "c69708f9-52eb-49f8-907f-ba2a736a4339",
+	"totalPass": 6,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "01187f19-9ec7-45e3-a139-8eaea24b0706",
+			"name": "Comprobar Servicio",
+			"url": "http://localhost:3000/",
+			"time": 17,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				17
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "d2c0fdaf-80be-45ad-b9db-56f7f6189196",
+			"name": "Registro Usuario",
+			"url": "http://localhost:3000/api/users/register",
+			"time": 1316,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Tiene un token": true
+			},
+			"testPassFailCounts": {
+				"Tiene un token": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1316
+			],
+			"allTests": [
+				{
+					"Tiene un token": true
+				}
+			]
+		},
+		{
+			"id": "69370978-a6a5-4122-8bcd-e680977ecb28",
+			"name": "Login",
+			"url": "http://localhost:3000/api/users/tokens",
+			"time": 1350,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Tiene un token": true
+			},
+			"testPassFailCounts": {
+				"Tiene un token": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1350
+			],
+			"allTests": [
+				{
+					"Tiene un token": true
+				}
+			]
+		},
+		{
+			"id": "27df5b11-c4a0-497a-97f4-bb3992e449dc",
+			"name": "Crear Pelicula",
+			"url": "http://localhost:3000/api/movies",
+			"time": 5,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Se creo la pelicula": true
+			},
+			"testPassFailCounts": {
+				"Se creo la pelicula": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Se creo la pelicula": true
+				}
+			]
+		},
+		{
+			"id": "7e72e509-e258-45a9-a80a-0d82c120d496",
+			"name": "Obtener Peliculas",
+			"url": "http://localhost:3000/api/movies",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Existe una pelicula": true
+			},
+			"testPassFailCounts": {
+				"Existe una pelicula": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Existe una pelicula": true
+				}
+			]
+		},
+		{
+			"id": "0abe6d68-3fd3-469f-9486-cd86f87b38ff",
+			"name": "Crear Pelicula Otra Pelicula",
+			"url": "http://localhost:3000/api/movies",
+			"time": 6,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Se creo la pelicula": true
+			},
+			"testPassFailCounts": {
+				"Se creo la pelicula": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Se creo la pelicula": true
+				}
+			]
+		},
+		{
+			"id": "e360391e-74f3-41c8-bc87-4447e12d9a43",
+			"name": "Obtener Peliculas Otra vez",
+			"url": "http://localhost:3000/api/movies",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Existe una pelicula": true
+			},
+			"testPassFailCounts": {
+				"Existe una pelicula": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Existe una pelicula": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 2702,
+	"collection": {
+		"requests": [
+			{
+				"id": "01187f19-9ec7-45e3-a139-8eaea24b0706",
+				"method": "GET"
+			},
+			{
+				"id": "d2c0fdaf-80be-45ad-b9db-56f7f6189196",
+				"method": "POST"
+			},
+			{
+				"id": "69370978-a6a5-4122-8bcd-e680977ecb28",
+				"method": "POST"
+			},
+			{
+				"id": "27df5b11-c4a0-497a-97f4-bb3992e449dc",
+				"method": "POST"
+			},
+			{
+				"id": "7e72e509-e258-45a9-a80a-0d82c120d496",
+				"method": "GET"
+			},
+			{
+				"id": "0abe6d68-3fd3-469f-9486-cd86f87b38ff",
+				"method": "POST"
+			},
+			{
+				"id": "e360391e-74f3-41c8-bc87-4447e12d9a43",
+				"method": "GET"
+			}
+		]
+	}
+}

@@ -5,5 +5,4 @@ public interface DAOM {
 	public int deleteAlumno(Alumno a);
 	public float updatePromedioAlumno(Alumno a, float nuevoPromedio);
 	public Alumno getAlumno(int id);
-	
 }

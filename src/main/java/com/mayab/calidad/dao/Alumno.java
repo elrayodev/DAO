@@ -16,6 +16,14 @@ public class Alumno {
 		this.promedio = 0;
 	}
 	
+	public Alumno(String nombre, int id, int edad, String email, float promedio) {
+		this.nombre = nombre;
+		this.id = id;
+		this.edad = edad;
+		this.email = email;
+		this.promedio = promedio;
+	}
+	
 	public Alumno(int id){
 		this.nombre = "";
 		this.id = id;

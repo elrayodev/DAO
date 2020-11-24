@@ -1,10 +1,11 @@
 package com.mayab.calidad.dao;
 
+import java.sql.Connection;
 import java.util.HashMap;
 
 public class DAOFake implements DAO{
 	
-	HashMap<Integer,Alumno> credenciales = new HashMap<Integer,Alumno>();
+	public HashMap<Integer,Alumno> credenciales = new HashMap<Integer,Alumno>();
 	
 	public void addAlumno(Alumno a) {
 		
@@ -53,6 +54,11 @@ public class DAOFake implements DAO{
 			return null;
 		}
 		
+	}
+
+	public Connection getConnection() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	
