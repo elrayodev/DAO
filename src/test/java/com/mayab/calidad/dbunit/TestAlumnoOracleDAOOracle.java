@@ -9,6 +9,12 @@ import org.junit.Test;
 import com.mayab.calidad.dao.Alumno;
 import com.mayab.calidad.dao.AlumnoDAOOracle;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
+import static org.hamcrest.Matchers.closeTo;
+
 import org.dbunit.Assertion;
 import org.dbunit.DBTestCase;
 import org.dbunit.dataset.IDataSet;
@@ -118,7 +124,7 @@ public class TestAlumnoOracleDAOOracle extends DBTestCase{
 		try {
 			IDataSet databaseDataSet = getConnection().createDataSet();
 			ITable actualTable = databaseDataSet.getTable("alumnos");
-			Object actualPromedio = actualTable.getValue(1, "promedio");
+			double actualPromedio = (Double) actualTable.getValue(1, "promedio");
 			
 			//Leemos datos del archivo esperado
 			//InputStream xmlFile = getClass().getResourceAsStream("/insert_result.xml");
@@ -126,10 +132,10 @@ public class TestAlumnoOracleDAOOracle extends DBTestCase{
 			
 			IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(new File("src/resources/alumno_update.xml"));
 			ITable expectedTable = expectedDataSet.getTable("alumnos");
-			Object expectedPromedio = expectedTable.getValue(0, "promedio");
-			
+			double expectedPromedio = Double.parseDouble((String) expectedTable.getValue(0, "promedio"));
+		
 			//Assertion.assertEquals(expectedTable, actualTable);
-			assertEquals(expectedPromedio,actualPromedio);
+			assertThat(expectedPromedio, is(actualPromedio));
 			
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
@@ -160,12 +166,12 @@ public class TestAlumnoOracleDAOOracle extends DBTestCase{
 			Object expectedName = actualTable.getValue(0, "first_name");
 			Object expectedAge = actualTable.getValue(0, "edad");
 			Object expectedEmail = actualTable.getValue(0, "email");
-			Object expectedPromedio = expectedTable.getValue(0, "promedio");
+			double expectedPromedio = Double.parseDouble((String) expectedTable.getValue(0, "promedio"));
 			
 			assertEquals(expectedName, actualName);
 			assertEquals(expectedAge, actualAge);
 			assertEquals(expectedEmail, actualEmail);
-			assertEquals(expectedPromedio, actualPromedio);
+			assertThat(expectedPromedio, is(actualPromedio));
 			
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
