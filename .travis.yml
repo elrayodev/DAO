@@ -18,6 +18,12 @@ install:
 - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
 
 before_script:
+- wget -N http://chromedriver.storage.googleapis.com/2.21/chromedriver_linux64.zip -P ~/
+- unzip ~/chromedriver_linux64.zip -d ~/
+- rm ~/chromedriver_linux64.zip
+- sudo mv -f ~/chromedriver /usr/local/share/chromedriver
+- sudo chmod +x /usr/local/share/chromedriver
+- sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
 - "export DISPLAY=:99.0"
 - sleep 3 #give xvfb time to start
 
