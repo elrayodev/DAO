@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.Select;
 
 public class TestMernCrud {
@@ -19,8 +20,19 @@ public class TestMernCrud {
   public void setUp() throws Exception {
 	  
 	  System.setProperty("webdriver.chrome.driver","/usr/local/bin/chromedriver");
+	  ChromeOptions options = new ChromeOptions();
 	  //System.setProperty("webdriver.chrome.driver","C:\\Users\\polo_\\Downloads\\chromedriver.exe");
 	  //System.setProperty("webdriver.chrome.verboseLogging", "true");
+	  options.addArguments("start-maximized");
+	  options.addArguments("disable-infobars");
+	  options.addArguments("--disable-extensions");
+	  options.addArguments("--disable-gpu");
+	  options.addArguments("--disable-dev-shm-usage");
+	  options.addArguments("--no-sandbox");
+	  options.addArguments("--headless");
+
+
+	  
 	  driver = new ChromeDriver();
 	  baseUrl = "https://mern-crud.herokuapp.com/";
 	  driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
