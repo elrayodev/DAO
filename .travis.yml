@@ -22,4 +22,4 @@ before_script:
 - sleep 3 #give xvfb time to start
 
 script:
-- travis_wait mvn -Dtest=TestMernCrud test
+- mvn -Dtest=TestMernCrud test
