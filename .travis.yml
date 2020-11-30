@@ -13,7 +13,7 @@ services:
 
 before_install:
 - sudo apt-get install libgconf-2-4
-- google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+#- google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 
 install:
 - wget -N http://chromedriver.storage.googleapis.com/2.20/chromedriver_linux64.zip -P ~/
@@ -32,6 +32,7 @@ before_script:
 #- sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
 - "export DISPLAY=:99.0"
 - sleep 3 #give xvfb time to start
+- google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 
 script:
 - mvn -Dtest=TestMernCrud test
