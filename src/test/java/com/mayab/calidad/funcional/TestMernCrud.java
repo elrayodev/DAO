@@ -17,7 +17,9 @@ public class TestMernCrud {
 
   @Before
   public void setUp() throws Exception {
-	  System.setProperty("webdriver.chrome.driver","C:\\Users\\polo_\\Downloads\\chromedriver.exe");
+	  
+	  System.setProperty("webdriver.chrome.driver","/usr/local/bin/chromedriver");
+	  //System.setProperty("webdriver.chrome.driver","C:\\Users\\polo_\\Downloads\\chromedriver.exe");
 	  driver = new ChromeDriver();
 	  baseUrl = "https://mern-crud.herokuapp.com/";
 	  driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
