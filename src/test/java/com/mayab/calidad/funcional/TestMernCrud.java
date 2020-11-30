@@ -23,6 +23,7 @@ public class TestMernCrud {
 	  driver = new ChromeDriver();
 	  baseUrl = "https://mern-crud.herokuapp.com/";
 	  driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	  
   }
 
   @Test
