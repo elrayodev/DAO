@@ -6,7 +6,8 @@ jdk:
 addons:
 chrome: stable
 
-
+services:
+- xvfb
 
 install:
 - wget -N http://chromedriver.storage.googleapis.com/80.0.3987.106/chromedriver_linux64.zip -P ~/
